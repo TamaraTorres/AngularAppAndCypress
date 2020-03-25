@@ -1,0 +1,33 @@
+{
+
+    "logs": "logs",
+    "logsLink":"[routerlink='/logs']",
+    "logsTitle":"Actions Log",
+    "clearLogBtn":".clear",
+    "logsMessage":"app-messages > div",
+
+    "search": "search",
+    "searchLink": "[routerlink='/search']",
+    "searchTitle":"Hero Search",
+    "searchInput":"#search-box",
+    "searchResult":".search-result",
+
+    "dashboard": "dashboard",
+    "dashaboardLink" :"[routerlink='/dashboard']",
+    "homePage": "/",
+    "title": "h1",
+    "subTitle":"h2",
+    "homeTitle":" Tammy Selected Heroes! ",
+    "mainLink": "routerlink",
+
+    "heroesLink":"[routerlink='/heroes']",
+    "heroesList":".heroes",
+    "addHeroBtn":"#add",
+    "addHeroName":"input",
+    "addHeroTitle":"Add a New Hero",
+    "heroTitle": "h4",
+    "heroes": "/heroes",
+    "backBtn": "go back",
+    "deleteBtn":".delete",
+    "saveBtn":"#save"
+}

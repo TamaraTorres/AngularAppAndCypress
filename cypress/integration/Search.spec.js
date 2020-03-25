@@ -1,19 +1,28 @@
-/// <reference types="cypress" />
-describe('Testing Dashboard', function() {
+import elements from '../utils/elements.json'
+
+describe('Testing Search', function() {
 
     it('Navigate to Search', function() {
-      cy.visit('/') ;
-      cy.get('[routerlink="/search"]').click()
-      cy.url().should('contain', 'search')
-      cy.get('#search-box').should('be.empty').and('be.enabled')
-      cy.contains('Hero Search').should('be.visible')
+      cy.goHome()
+      cy.get(elements.searchLink).click()
+      cy.url().should('contain', elements.search)
+      cy.get(elements.searchInput).should('be.empty').and('be.enabled')
+      cy.contains(elements.searchTitle).should('be.visible')
     })
 
     it('Search existing Heroe', function(){
-        //TODO:
+       cy.visit(elements.search)
+       cy.get(elements.searchInput).clear()
+       cy.get(elements.searchInput).type('Batman')
+       cy.get(elements.searchResult).children().should('have.length',1)
+       cy.contains('Batman').should('be.visible')
+       cy.contains('Batman').click()
     })
 
     it ('Search NON existing Heroe', function(){
-        //TODO:
+      cy.visit(elements.search)
+      cy.get(elements.searchInput).clear()
+      cy.get(elements.searchInput).type('Hulk')
+      cy.get(elements.searchResult).should('empty')
     })
   })

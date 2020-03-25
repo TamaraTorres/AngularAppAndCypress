@@ -1,27 +1,35 @@
-/// <reference types="cypress" />
+import elements from '../utils/elements.json'
 describe('Testing Dashboard', function() {
 
     it('Home Page', function() {
-      cy.visit('/') ;
+      cy.visit(elements.homePage) 
       cy.get('a')
       .should(($p) => {
         expect($p).to.have.length(8)
-        expect($p.get(0)).attr('routerlink').to.contain('dashboard')
-        expect($p.get(1)).attr('routerlink').to.contain('heroes')
-        expect($p.get(2)).attr('routerlink').to.contain('search')
-        expect($p.get(3)).attr('routerlink').to.contain('logs')
+        expect($p.get(0)).attr(elements.mainLink).to.contain(elements.dashboard)
+        expect($p.get(1)).attr(elements.mainLink).to.contain(elements.heroes)
+        expect($p.get(2)).attr(elements.mainLink).to.contain(elements.search)
+        expect($p.get(3)).attr(elements.mainLink).to.contain(elements.logs)
       })
-      cy.get('h1').should('have.text', ' Tammy Selected Heroes! ');
+      cy.get(elements.title).should('have.text',elements.homeTitle);
   
     });
 
     it('Navigate to Dashboard', function() {
-      cy.visit('/') ;
-      cy.get('[routerlink="/dashboard"]').click()
-      cy.url().should('contain', 'dashboard')
+      cy.visit(elements.homePage) 
+      cy.get(elements.dashaboardLink, {timeout:6000}).click()
+      cy.url().should('contain', elements.dashboard)
     })
 
     it ('Check Main heroes are display', function(){
-      
+      cy.visit(elements.homePage) 
+      cy.get(elements.heroTitle)
+      .should(($p) => {
+        expect($p).to.have.length(4)
+        expect($p.get(0)).contain('CatWoman')
+        expect($p.get(1)).contain('Batman')
+        expect($p.get(2)).contain('WonderWoman')
+        expect($p.get(3)).contain('Magneto')
+      })
     })
   })
